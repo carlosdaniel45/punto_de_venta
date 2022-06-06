@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Provider\StoreRequest;
+use App\Http\Requests\Provider\UpdateRequest;
 use App\Models\provider;
 use App\Http\Requests\StoreproviderRequest;
 use App\Http\Requests\UpdateproviderRequest;
@@ -26,7 +28,7 @@ class providerController extends Controller
      * @param  \App\Http\Requests\StoreproviderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreproviderRequest $request)
+    public function store(StoreRequest $request)
     {
         Provider::create($request->all());
         return redirect()->route('providers.index');
@@ -61,7 +63,7 @@ class providerController extends Controller
      * @param  \App\Models\provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateproviderRequest $request, provider $provider)
+    public function update(UpdateRequest $request, provider $provider)
     {
         $provider->update($request->all());
         return redirect()->route('providers.index');

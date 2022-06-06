@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name'=>'required|string|unique:products,name,'.
-            $this->route('produ')->id.'|max:255',           
+            $this->route('product')->id.'|max:255',           
            'image'=>'required|dimensions:min_width=100,min_height=200',
            'sell_price'=>'required',
            'category_id'=>'integer|required|exists:App\Category,id',

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -30,7 +32,7 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreRequest $request)
     {
         Product::create($request->all());
         return redirect()->route('products.index');
@@ -68,7 +70,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request, Product $Product)
+    public function update(UpdateRequest $request, Product $Product)
     {
         $Product->update($request->all());
         return redirect()->route('products.index');
